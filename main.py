@@ -23,6 +23,7 @@ def appendCredentials(vendor):
                         passwords.append(line)
         list_number += 1
 
+
 def printResult():
     for user in users:
         print(f'\n\t\tFor the user {user}\n')
@@ -34,11 +35,24 @@ vendors = {
     'Brocade': ['./credentials/U_Brocade.txt', './credentials/P_Brocade.txt'],
     'Cisco': ['./credentials/U_Cisco.txt', './credentials/P_Cisco.txt'],
     'Citrix': ['./credentials/U_Citrix.txt', './credentials/P_Citrix.txt'],
-
+    'D-Link': ['./credentials/U_D-Link.txt', './credentials/P_D-Link.txt'],
+    'Dell': ['./credentials/U_Dell.txt', './credentials/P_Dell.txt'],
+    'EMC': ['./credentials/U_EMC.txt', './credentials/P_EMC.txt'],
+    'HP': ['./credentials/U_HP.txt', './credentials/P_HP.txt'],
+    'Huawei': ['./credentials/U_Huawei.txt', './credentials/P_Huawei.txt'],
+    'IBM': ['./credentials/U_IBM.txt', './credentials/P_IBM.txt'],
+    'Juniper': ['./credentials/U_Juniper.txt', './credentials/P_Juniper.txt'],
+    'NetApp': ['./credentials/U_NetApp.txt', './credentials/P_NetApp.txt'],
+    'Oracle': ['./credentials/U_Oracle.txt', './credentials/P_Oracle.txt'],
+    'VMware': ['./credentials/U_VMware.txt', './credentials/P_VMware.txt'],
+    '3Com': ['./credentials/U_3Com.txt', './credentials/P_3Com.txt']
 }
 
 vendors_lower = []
 [vendors_lower.append(vendor.lower()) for vendor in vendors]
+
+users = []
+passwords = []
 
 try:
     if sys.argv[1] == '--vendors':
@@ -55,14 +69,9 @@ try:
     else:
         for vendor in vendors:
             if sys.argv[1].lower() == vendor.lower():
-                users = []
-                passwords = []
                 appendCredentials(vendor)
         printResult()
         print()
 
 except:
     usageInstruction()
-
-# TODO complete the ALL switch
-# TODO complete dictionary
